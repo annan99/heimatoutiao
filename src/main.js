@@ -6,8 +6,12 @@ import Vant from 'vant';
 import 'vant/lib/index.less';
 import 'amfe-flexible'
 import '@/styles/icon.less'
+import '@/styles/reset.less'
+import '@/styles/index.less'
+import MyIcon from '@/components/MyIcon.vue'
 Vue.use(Vant);
 Vue.config.productionTip = false
+Vue.component('MyIcon',MyIcon)
 
 new Vue({
   router,

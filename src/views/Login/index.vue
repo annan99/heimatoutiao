@@ -1,7 +1,7 @@
 <template>
 <div>
     <van-nav-bar title="登录">
-      <van-icon name="cross" slot="left"/>
+      <van-icon name="cross" slot="left" @click-left="$router.back()"/>
     </van-nav-bar>
     <van-form @submit="onSubmit" ref="form">
   <van-field
@@ -10,7 +10,8 @@
     placeholder="请输入手机号"
     :rules="[{ required: true, message: '请输入手机号' },{pattern:/^(?:(?:\+|00)86)?1\d{10}$/,message:'不符合手机的格式'}]"
   >
-  <i class="toutiao toutiao-shouji" slot="left-icon"></i>
+  <!-- <i class="toutiao toutiao-shouji" slot="left-icon"></i> -->
+  <MyIcon name="shouji" slot="left-icon"></MyIcon>
   </van-field>
   <van-field
     v-model.trim="code"
@@ -19,7 +20,8 @@
     placeholder="请填写验证码"
     :rules="[{ required: true, message: '请填写验证码' },{pattern:/^\d{6}$/,message:'验证码长度必须是6位'}]"
   >
-  <i class="toutiao toutiao-yanzhengma" slot="left-icon"></i>
+  <!-- <i class="toutiao toutiao-yanzhengma" slot="left-icon"></i> -->
+  <MyIcon name="yanzhengma" slot="left-icon"></MyIcon>
    <template #button>
     <van-count-down v-if="isCountDownShow" :time="time" format=" ss s" @finish="isCountDownShow=false"/>
     <van-button @click="onSendSms" v-else size="small" type="primary" class="yanzhengma" native-type="button">发送验证码</van-button>
@@ -53,6 +55,7 @@ export default {
         console.log(res);
         // token有效期 2个小时 两种思路 让用户重新登陆 refresh_token
         this.$store.commit('setUser',res.data.data)
+        this.$router.push({name:'my'})
       }catch(err){
         console.log(err);
       } 
