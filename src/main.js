@@ -20,6 +20,11 @@ Object.keys(obj).forEach(key=>{
 Vue.config.productionTip = false
 Vue.component('MyIcon',MyIcon)
 
+import FollowUser from '@/components/FollowUser.vue'
+Vue.component(FollowUser.name,FollowUser)
+
+import '@/components'
+
 new Vue({
   router,
   store,

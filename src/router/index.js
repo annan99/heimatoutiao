@@ -7,6 +7,7 @@ const Question=()=>import('@/views/Question')
 const My=()=>import('@/views/My')
 const Login=()=>import('@/views/Login')
 const Search=()=>import('@/views/Search')
+const Article=()=>import('@/views/Article')  //懒加载写法
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
   ]},
   {path:'/login',component:Login},
   {path:'/search',component:Search},
+  {path:'/article/:article_id',component:Article,name:'article',props:true},  //params相关路由加props：true可以让路由和组件解耦
 ]
 
 const router = new VueRouter({
